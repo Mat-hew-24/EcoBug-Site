@@ -9,9 +9,9 @@ function Btn({ text }: BtnProps) {
     <button
       className={`
         group relative px-2 py-1
-        ${pixelifySans.className} text-3xl text-gray-700
+        ${pixelifySans.className} text-3xl text-[#1d4226c8]
         transition-all duration-300 ease-out
-        hover:text-black hover:-translate-y-1 active:translate-y-0 active:scale-95
+        hover:text-[#1d4226] hover:-translate-y-1 active:translate-y-0 active:scale-95
         cursor-pointer
       `}
     >
@@ -25,11 +25,13 @@ function SubSection() {
   return (
     <div>
       <div>
-        <h1 className={`text-center text-6xl ${pixelifySans.className}`}>
+        <h1
+          className={`text-center text-8xl text-[#1d4226] ${pixelifySans.className}`}
+        >
           ECOBUG
         </h1>
       </div>
-      <div className='flex flex-wrap justify-center  gap-16 lg:gap-40 gap-y-6 mt-6 md:mt-10'>
+      <div className='flex flex-wrap justify-center  gap-16 lg:gap-40 gap-y-6 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 mt-6 md:mt-10'>
         <Btn text='HOME' />
         <Btn text='BUY' />
         <Btn text='WEBTOOL' />

@@ -8,7 +8,6 @@ const style = (
         .animate-scroll {
           animation: scroll 15s linear infinite;
         }
-        /* Pauses the animation when the user hovers over the container */
         .animate-scroll:hover {
           animation-play-state: paused;
         }
@@ -20,7 +19,7 @@ export default function Feedbacks() {
   return (
     <>
       {style}
-      <div className='min-h-screen flex items-end'>
+      <div className='min-h-screen scale-90 md:scale-100 flex items-end'>
         <div className='max-w-4xl w-full mx-auto bg-white rounded-2xl border border-gray-200 shadow-[0px_2px_6px_#000] p-8 md:p-12 mb-5 overflow-hidden'>
           <div
             className={`text-[#204922] uppercase tracking-widest text-2xl mb-8 ${pixelifySans.className}`}
