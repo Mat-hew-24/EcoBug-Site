@@ -4,6 +4,8 @@ import Navbar from '@/components/shared/Navbar'
 import Feedbacks from '@/pageComponents/Feedbacks/page'
 // import Page1 from '@/pageComponents/Page1/page'
 import Subscriptions from '@/pageComponents/Subscriptions/page'
+import Blog from './blog/page'
+import WebTool from './webtool/page'
 
 export default function Home() {
   return (
@@ -11,6 +13,8 @@ export default function Home() {
       <Navbar />
       <Feedbacks />
       <Subscriptions />
+      {/* <Blog /> */}
+      {/* <WebTool /> */}
     </div>
   )
 }

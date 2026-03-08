@@ -1,10 +1,23 @@
+'use client'
+
 import { pixelifySans } from '../utils/utils'
+import { useRouter } from 'next/navigation'
 
 type BtnProps = {
   text: string
+  link: string
 }
 
-function Btn({ text }: BtnProps) {
+const links = {
+  home: '#',
+  buy: '#',
+  webtool: '/webtool',
+  blog: '/blog',
+  aboutus: '/about-us',
+}
+
+function Btn({ text, link }: BtnProps) {
+  const r = useRouter()
   return (
     <button
       className={`
@@ -14,6 +27,9 @@ function Btn({ text }: BtnProps) {
         hover:text-[#1d4226] hover:-translate-y-1 active:translate-y-0 active:scale-95
         cursor-pointer
       `}
+      onClick={() => {
+        r.push(link)
+      }}
     >
       {text}
       <span className='absolute left-0 -bottom-1 w-full h-1 bg-[#2f7335] rounded-full origin-right scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100 group-hover:origin-left' />
@@ -32,11 +48,11 @@ function SubSection() {
         </h1>
       </div>
       <div className='flex flex-wrap justify-center  gap-16 lg:gap-40 gap-y-6 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 mt-6 md:mt-10'>
-        <Btn text='HOME' />
-        <Btn text='BUY' />
-        <Btn text='WEBTOOL' />
-        <Btn text='BLOG' />
-        <Btn text='ABOUT US' />
+        <Btn text='HOME' link={links.home} />
+        <Btn text='BUY' link={links.buy} />
+        <Btn text='WEBTOOL' link={links.webtool} />
+        <Btn text='BLOG' link={links.blog} />
+        <Btn text='ABOUT US' link={links.aboutus} />
       </div>
     </div>
   )
