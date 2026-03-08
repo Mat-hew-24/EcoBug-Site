@@ -15,7 +15,7 @@ export default function SubscriptionCard({
   const r = useRouter()
   return (
     <div
-      className={`bg-[#1d4226] text-white w-full max-w-[320px] h-[500px] rounded-xl p-8 flex flex-col shadow-[0_5px_15px_rgba(0,0,0,0.3)] ${pixelifySans.className}`}
+      className={`bg-[#1d4226] text-white w-full max-w-[320px] h-[500px] rounded-xl p-8 flex flex-col shadow-[0px_6px_6px_#000] ${pixelifySans.className}`}
     >
       <div className='mt-10 text-center'>
         <h2 className='text-3xl tracking-widest'>{type}</h2>
