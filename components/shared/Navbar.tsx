@@ -1,41 +1,31 @@
 import { pixelifySans } from '../utils/utils'
 
+type BtnProps = {
+  text: string
+}
+
+function Btn({ text }: BtnProps) {
+  return (
+    <button className={`${pixelifySans.className} text-3xl cursor-pointer`}>
+      {text}
+    </button>
+  )
+}
+
 function SubSection() {
   return (
     <div>
       <div>
-        <h1
-          className={`text-center text-4xl md:text-6xl ${pixelifySans.className}`}
-        >
+        <h1 className={`text-center text-6xl ${pixelifySans.className}`}>
           ECOBUG
         </h1>
       </div>
-      <div className='flex flex-wrap justify-center gap-6 md:gap-10 lg:gap-40 mt-6 md:mt-10'>
-        <button
-          className={`${pixelifySans.className} text-xl md:text-3xl cursor-pointer`}
-        >
-          HOME
-        </button>
-        <button
-          className={`text-xl md:text-3xl ${pixelifySans.className} cursor-pointer`}
-        >
-          BUY
-        </button>
-        <button
-          className={`text-xl md:text-3xl ${pixelifySans.className} cursor-pointer`}
-        >
-          WEBTOOL
-        </button>
-        <button
-          className={`text-xl md:text-3xl ${pixelifySans.className} cursor-pointer`}
-        >
-          BLOG
-        </button>
-        <button
-          className={`text-xl md:text-3xl ${pixelifySans.className} cursor-pointer`}
-        >
-          ABOUT US
-        </button>
+      <div className='flex flex-wrap justify-center  gap-16 lg:gap-40 gap-y-6 mt-6 md:mt-10'>
+        <Btn text='HOME' />
+        <Btn text='BUY' />
+        <Btn text='WEBTOOL' />
+        <Btn text='BLOG' />
+        <Btn text='ABOUT US' />
       </div>
     </div>
   )
