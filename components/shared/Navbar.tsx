@@ -6,8 +6,17 @@ type BtnProps = {
 
 function Btn({ text }: BtnProps) {
   return (
-    <button className={`${pixelifySans.className} text-3xl cursor-pointer`}>
+    <button
+      className={`
+        group relative px-2 py-1
+        ${pixelifySans.className} text-3xl text-gray-700
+        transition-all duration-300 ease-out
+        hover:text-black hover:-translate-y-1 active:translate-y-0 active:scale-95
+        cursor-pointer
+      `}
+    >
       {text}
+      <span className='absolute left-0 -bottom-1 w-full h-1 bg-[#2f7335] rounded-full origin-right scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100 group-hover:origin-left' />
     </button>
   )
 }
