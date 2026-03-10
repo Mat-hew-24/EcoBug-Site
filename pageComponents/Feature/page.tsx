@@ -1,4 +1,4 @@
-export default function Page1() {
+export default function Feature() {
   return (
     <>
       <div className='min-h-screen bg-[#2f7a3b] text-white font-mono'>
