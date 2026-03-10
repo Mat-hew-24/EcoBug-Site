@@ -6,12 +6,14 @@ import Feedbacks from '@/pageComponents/Feedbacks/page'
 import Subscriptions from '@/pageComponents/Subscriptions/page'
 import Blog from './blog/page'
 import WebTool from './webtool/page'
+import Product from './product/page'
 
 export default function Home() {
   return (
     <div className='bg-white'>
       <Navbar />
       <Feedbacks />
+      <Product/>
       <Subscriptions />
       {/* <Blog /> */}
       {/* <WebTool /> */}
