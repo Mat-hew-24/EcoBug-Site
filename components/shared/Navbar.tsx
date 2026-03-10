@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { pixelifySans } from '../utils/utils'
 import { useRouter } from 'next/navigation'
 
@@ -9,12 +10,20 @@ type BtnProps = {
 }
 
 const links = {
-  home: '#',
-  buy: '#',
+  home: '/',
+  buy: '/',
   webtool: '/webtool',
   blog: '/blog',
   aboutus: '/about-us',
 }
+
+const navItems = [
+  { text: 'HOME', link: links.home },
+  { text: 'BUY', link: links.buy },
+  { text: 'WEBTOOL', link: links.webtool },
+  { text: 'BLOG', link: links.blog },
+  { text: 'ABOUT US', link: links.aboutus },
+]
 
 function Btn({ text, link }: BtnProps) {
   const r = useRouter()
@@ -38,6 +47,20 @@ function Btn({ text, link }: BtnProps) {
 }
 
 function SubSection() {
+  const [scrollY, setScrollY] = useState(0)
+  const [maxScroll, setMaxScroll] = useState(0)
+  useEffect(() => {
+    setMaxScroll(window.innerHeight)
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const archIntensity = Math.max(0, 1 - scrollY / maxScroll)
+
   return (
     <div>
       <div>
@@ -47,12 +70,24 @@ function SubSection() {
           ECOBUG
         </h1>
       </div>
-      <div className='flex flex-wrap justify-center  gap-16 lg:gap-40 gap-y-6 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 mt-6 md:mt-10'>
-        <Btn text='HOME' link={links.home} />
-        <Btn text='BUY' link={links.buy} />
-        <Btn text='WEBTOOL' link={links.webtool} />
-        <Btn text='BLOG' link={links.blog} />
-        <Btn text='ABOUT US' link={links.aboutus} />
+      <div className='flex flex-wrap justify-center gap-16 lg:gap-40 gap-y-6 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 mt-6 md:mt-10'>
+        {navItems.map((item, index) => {
+          const distanceFromCenter = Math.abs(index - 2)
+          const baseOffset = distanceFromCenter * distanceFromCenter * 20
+          const currentY = baseOffset * archIntensity
+          return (
+            <div
+              key={item.text}
+              style={{
+                transform: `translateY(${currentY}px)`,
+                transition: 'transform 0.1s ease-in-out',
+                willChange: 'transform',
+              }}
+            >
+              <Btn text={item.text} link={item.link} />
+            </div>
+          )
+        })}
       </div>
     </div>
   )
