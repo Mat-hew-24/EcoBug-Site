@@ -10,8 +10,8 @@ type BtnProps = {
 }
 
 const links = {
-  home: '#',
-  buy: '#',
+  home: '/',
+  buy: '/',
   webtool: '/webtool',
   blog: '/blog',
   aboutus: '/about-us',
@@ -48,7 +48,9 @@ function Btn({ text, link }: BtnProps) {
 
 function SubSection() {
   const [scrollY, setScrollY] = useState(0)
+  const [maxScroll, setMaxScroll] = useState(0)
   useEffect(() => {
+    setMaxScroll(window.innerHeight)
     const handleScroll = () => {
       setScrollY(window.scrollY)
     }
@@ -57,7 +59,6 @@ function SubSection() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const maxScroll = window.innerHeight
   const archIntensity = Math.max(0, 1 - scrollY / maxScroll)
 
   return (
@@ -79,7 +80,8 @@ function SubSection() {
               key={item.text}
               style={{
                 transform: `translateY(${currentY}px)`,
-                transition: 'transform 0.1s ease-in-out will-change-transform',
+                transition: 'transform 0.1s ease-in-out',
+                willChange: 'transform',
               }}
             >
               <Btn text={item.text} link={item.link} />
