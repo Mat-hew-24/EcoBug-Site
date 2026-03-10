@@ -6,6 +6,7 @@ import Feedbacks from '@/pageComponents/Feedbacks/page'
 import Subscriptions from '@/pageComponents/Subscriptions/page'
 import Footer from '@/components/shared/Footer'
 import Lenis from 'lenis'
+import Product from './product/page'
 
 import { useEffect } from 'react'
 
@@ -29,6 +30,7 @@ export default function Home() {
     <div className='bg-white'>
       <Navbar />
       <Feedbacks />
+      <Product/>
       <Subscriptions />
       <Footer />
     </div>
