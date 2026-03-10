@@ -1,20 +1,36 @@
-// import Login from '@/components/forms/Login'
-// import Signup from '@/components/forms/SignUp'
+'use client'
+
 import Navbar from '@/components/shared/Navbar'
 import Feedbacks from '@/pageComponents/Feedbacks/page'
 // import Page1 from '@/pageComponents/Page1/page'
 import Subscriptions from '@/pageComponents/Subscriptions/page'
-import Blog from './blog/page'
-import WebTool from './webtool/page'
+import Footer from '@/components/shared/Footer'
+import Lenis from 'lenis'
+
+import { useEffect } from 'react'
 
 export default function Home() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 0.5,
+      smoothWheel: true,
+    })
+
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+
+    return () => lenis.destroy()
+  }, [])
+
   return (
     <div className='bg-white'>
       <Navbar />
       <Feedbacks />
       <Subscriptions />
-      {/* <Blog /> */}
-      {/* <WebTool /> */}
+      <Footer />
     </div>
   )
 }
