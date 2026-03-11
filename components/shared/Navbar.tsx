@@ -33,7 +33,7 @@ function Btn({ text, link }: BtnProps) {
       className={`
         group relative px-2 py-1
         ${pixelifySans.className}
-        text-md sm:text-2xl md:text-3xl text-[#1d4226c8]
+        text-sm sm:text-2xl md:text-3xl text-[#1d4226c8]
         transition-all duration-300 ease-out
         hover:text-[#1d4226] hover:-translate-y-1
         active:translate-y-0 active:scale-95
@@ -98,7 +98,7 @@ function SubSection() {
         <button>J</button>
       </div>
 
-      <div className='flex flex-wrap justify-center ml-0 md:ml-16 gap-4 sm:gap-8 lg:gap-40 gap-y-2 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 mt-6 md:mt-10'>
+      <div className='flex flex-wrap justify-center ml-0 md:ml-16 sm:gap-8 lg:gap-40 gap-y-2 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 mt-6 md:mt-10'>
         {navItems.map((item, index) => {
           const distanceFromCenter = index - (navItems.length - 1) / 2
           const baseOffset = distanceFromCenter ** 2 * 20
