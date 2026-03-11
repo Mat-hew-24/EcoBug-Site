@@ -27,18 +27,19 @@ const navItems = [
 
 function Btn({ text, link }: BtnProps) {
   const r = useRouter()
+
   return (
     <button
       className={`
         group relative px-2 py-1
-        ${pixelifySans.className} text-3xl text-[#1d4226c8]
+        ${pixelifySans.className}
+        text-sm sm:text-2xl md:text-3xl text-[#1d4226c8]
         transition-all duration-300 ease-out
-        hover:text-[#1d4226] hover:-translate-y-1 active:translate-y-0 active:scale-95
+        hover:text-[#1d4226] hover:-translate-y-1
+        active:translate-y-0 active:scale-95
         cursor-pointer
       `}
-      onClick={() => {
-        r.push(link)
-      }}
+      onClick={() => r.push(link)}
     >
       {text}
       <span className='absolute left-0 -bottom-1 w-full h-1 bg-[#2f7335] rounded-full origin-right scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100 group-hover:origin-left' />
@@ -47,40 +48,69 @@ function Btn({ text, link }: BtnProps) {
 }
 
 function SubSection() {
+  const router = useRouter()
+
   const [scrollY, setScrollY] = useState(0)
-  const [maxScroll, setMaxScroll] = useState(0)
+  const [maxScroll, setMaxScroll] = useState(1)
+  const [width, setWidth] = useState(0)
+
   useEffect(() => {
-    setMaxScroll(window.innerHeight)
+    const updateSize = () => {
+      setMaxScroll(window.innerHeight)
+      setWidth(window.innerWidth)
+    }
+
     const handleScroll = () => {
       setScrollY(window.scrollY)
     }
+
+    updateSize()
     handleScroll()
+
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('resize', updateSize)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', updateSize)
+    }
   }, [])
 
-  const archIntensity = Math.max(0, 1 - scrollY / maxScroll)
-
+  const archIntensity = Math.max(0, 1 - scrollY / (maxScroll * 0.45))
   return (
     <div>
-      <div>
+      <div className='flex justify-between mx-6 md:mx-12'>
+        <button
+          onClick={() => {
+            const x = Math.random()
+            x > 0.5 ? router.push('/auth/login') : router.push('/auth/signup')
+          }}
+        >
+          L
+        </button>
+
         <h1
-          className={`text-center text-8xl text-[#1d4226] ${pixelifySans.className}`}
+          className={`text-center text-5xl md:text-8xl text-[#1d4226] ${pixelifySans.className}`}
         >
           ECOBUG
         </h1>
+
+        <button>J</button>
       </div>
-      <div className='flex flex-wrap justify-center gap-16 lg:gap-40 gap-y-6 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 mt-6 md:mt-10'>
+
+      <div className='flex flex-wrap justify-center ml-0 md:ml-16 sm:gap-8 lg:gap-40 gap-y-2 sm:gap-y-3 md:gap-y-3 lg:gap-y-3 mt-6 md:mt-10'>
         {navItems.map((item, index) => {
-          const distanceFromCenter = Math.abs(index - 2)
-          const baseOffset = distanceFromCenter * distanceFromCenter * 20
-          const currentY = baseOffset * archIntensity
+          const distanceFromCenter = index - (navItems.length - 1) / 2
+          const baseOffset = distanceFromCenter ** 2 * 20
+          const scale = Math.min(width / 1200, 1)
+          const currentY = baseOffset * archIntensity * scale
+
           return (
             <div
               key={item.text}
               style={{
                 transform: `translateY(${currentY}px)`,
-                transition: 'transform 0.1s ease-in-out',
+                transition: 'transform 0.1s',
                 willChange: 'transform',
               }}
             >

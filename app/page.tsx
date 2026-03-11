@@ -9,6 +9,7 @@ import Lenis from 'lenis'
 import Product from './product/page'
 
 import { useEffect } from 'react'
+import Hero from '@/pageComponents/Hero/page'
 
 export default function Home() {
   useEffect(() => {
@@ -28,9 +29,10 @@ export default function Home() {
 
   return (
     <div className='bg-white'>
+      <Hero />
       <Navbar />
       <Feedbacks />
-      <Product/>
+      <Product />
       <Subscriptions />
       <Footer />
     </div>
