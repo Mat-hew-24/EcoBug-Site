@@ -17,7 +17,7 @@ export default function About() {
           <h1
             className={`${pixelifySans.className} text-6xl sm:text-8xl text-white mt-16 md:mt-8 z-5`}
           >
-            ABOUT US
+            ABOUT
           </h1>
         </div>
         <div className='flex items-center justify-center backdrop-blur-2xl border border-white rounded-3xl p-8 m-10 md:m-14 lg:m-20'>
