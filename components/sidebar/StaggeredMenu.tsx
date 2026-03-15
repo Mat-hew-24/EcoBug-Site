@@ -552,7 +552,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           style={{ WebkitBackdropFilter: 'blur(12px)' }}
           aria-hidden={!open}
         >
-          {/* Added 'X' close button here */}
+          {/* 'X' close button */}
           <button
             onClick={closeMenu}
             className='absolute top-8 right-8 scale-110 hover:scale-120 trans text-black text-4xl hover:opacity-70 transition-opacity z-50 cursor-pointer'
@@ -567,18 +567,16 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             />
           </button>
 
-          {/* Added mt-12 to push options down */}
           <div className='sm-panel-inner flex-1 flex flex-col gap-5 mt-12'>
-            {/* Changed gap-2 to gap-6 for increased spacing */}
             <ul
-              className='sm-panel-list list-none m-0 p-0 flex flex-col gap-6'
+              className='sm-panel-list list-none m-0 p-0 scale-100 sm:scale-100 flex flex-col gap-6'
               role='list'
               data-numbering={displayItemNumbering || undefined}
             >
               {items && items.length ? (
                 items.map((it, idx) => (
                   <li
-                    className='sm-panel-itemWrap relative overflow-hidden leading-none'
+                    className='sm-panel-itemWrap sm:mt-2 md:mt-6 relative overflow-hidden leading-none'
                     key={it.label + idx}
                   >
                     <a
@@ -586,6 +584,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                       href={it.link}
                       aria-label={it.ariaLabel}
                       data-index={idx + 1}
+                      onClick={closeMenu} // <-- Added onClick close trigger here
                     >
                       <span className='sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform'>
                         {it.label}
@@ -626,6 +625,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                         target='_blank'
                         rel='noopener noreferrer'
                         className='sm-socials-link text-[1.2rem] font-medium text-[#111] no-underline relative inline-block py-[2px] transition-[color,opacity] duration-300 ease-linear'
+                        onClick={closeMenu} // <-- Added onClick close trigger here
                       >
                         {s.label}
                       </a>

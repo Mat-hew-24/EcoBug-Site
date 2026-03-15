@@ -16,7 +16,7 @@ const links = {
   buy: '/',
   webtool: '/webtool',
   blog: '/blog',
-  aboutus: '/about-us',
+  aboutus: '/about',
 }
 
 const navItems = [
@@ -31,7 +31,7 @@ const menuItems = [
   { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
   { label: 'Webtool', ariaLabel: 'Go to webtool', link: '/webtool' },
   { label: 'Blog', ariaLabel: 'Go to blog', link: '/blog' },
-  { label: 'About', ariaLabel: 'About us', link: '/about-us' },
+  { label: 'About', ariaLabel: 'About us', link: '/about' },
   { label: 'Buy', ariaLabel: 'Buy now', link: '/' },
 ]
 
