@@ -23,13 +23,7 @@ export default function Hero() {
         {/* Right Side: Button */}
         <button
           className={`
-            mt-8 md:mt-0 shrink-0
-            ${pixelifySans.className} text-white text-3xl md:text-4xl tracking-widest
-            bg-[#1a3822] px-10 py-5 rounded-2xl
-            border-b-[6px] border-[#0d1c11]
-            active:border-b-0 active:translate-y-[6px]
-            transition-all duration-100 ease-in-out cursor-pointer
-          `}
+            mt-6 md:mt-0 shrink-0 ${pixelifySans.className} text-white text-3xl md:text-4xl tracking-widest bg-[#1a3822] px-10 py-4 md:py-5 rounded-2xl border-b-[6px] border-[#0d1c11] active:border-b-0 active:translate-y-[6px] transition-all duration-100 ease-in-out cursor-pointer scale-75 md:scale-100`}
         >
           BUY
         </button>
