@@ -1,5 +1,6 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
+import Image from 'next/image'
 
 export interface StaggeredMenuItem {
   label: string
@@ -551,9 +552,26 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           style={{ WebkitBackdropFilter: 'blur(12px)' }}
           aria-hidden={!open}
         >
-          <div className='sm-panel-inner flex-1 flex flex-col gap-5'>
+          {/* Added 'X' close button here */}
+          <button
+            onClick={closeMenu}
+            className='absolute top-8 right-8 scale-110 hover:scale-120 trans text-black text-4xl hover:opacity-70 transition-opacity z-50 cursor-pointer'
+            aria-label='Close panel'
+          >
+            <Image
+              src='/close.png'
+              alt='menu'
+              width={36}
+              height={36}
+              className='w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11'
+            />
+          </button>
+
+          {/* Added mt-12 to push options down */}
+          <div className='sm-panel-inner flex-1 flex flex-col gap-5 mt-12'>
+            {/* Changed gap-2 to gap-6 for increased spacing */}
             <ul
-              className='sm-panel-list list-none m-0 p-0 flex flex-col gap-2'
+              className='sm-panel-list list-none m-0 p-0 flex flex-col gap-6'
               role='list'
               data-numbering={displayItemNumbering || undefined}
             >

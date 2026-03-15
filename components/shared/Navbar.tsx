@@ -57,9 +57,61 @@ function Btn({ text, link }: BtnProps) {
   )
 }
 
-function SubSection({ onHamburgerClick }: { onHamburgerClick: () => void }) {
+function UserDialog() {
   const router = useRouter()
+  const [open, setOpen] = useState(false)
+  const dialogRef = useRef<HTMLDivElement>(null)
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dialogRef.current && !dialogRef.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    if (open) document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [open])
+
+  return (
+    <div ref={dialogRef} className='relative flex items-center'>
+      <button className='cursor-pointer' onClick={() => setOpen((p) => !p)}>
+        <Image
+          src='/user.png'
+          alt='user'
+          width={36}
+          height={36}
+          className='w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11'
+        />
+      </button>
+
+      {open && (
+        <div className='absolute top-full right-0 mt-2 w-36 bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden z-50'>
+          <button
+            onClick={() => {
+              router.push('/auth/login')
+              setOpen(false)
+            }}
+            className={`w-full cursor-pointer text-left px-4 py-3 text-sm text-[#1d4226] hover:bg-[#f0f7f0] transition-colors ${pixelifySans.className}`}
+          >
+            Login
+          </button>
+          <div className='h-px bg-gray-100' />
+          <button
+            onClick={() => {
+              router.push('/auth/signup')
+              setOpen(false)
+            }}
+            className={`w-full cursor-pointer text-left px-4 py-3 text-sm text-[#1d4226] hover:bg-[#f0f7f0] transition-colors ${pixelifySans.className}`}
+          >
+            Sign Up
+          </button>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function SubSection({ onHamburgerClick }: { onHamburgerClick: () => void }) {
   const [scrollY, setScrollY] = useState(0)
   const [maxScroll, setMaxScroll] = useState(1)
   const [width, setWidth] = useState(0)
@@ -69,17 +121,13 @@ function SubSection({ onHamburgerClick }: { onHamburgerClick: () => void }) {
       setMaxScroll(window.innerHeight)
       setWidth(window.innerWidth)
     }
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
+    const handleScroll = () => setScrollY(window.scrollY)
 
     updateSize()
     handleScroll()
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', updateSize)
-
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', updateSize)
@@ -90,7 +138,7 @@ function SubSection({ onHamburgerClick }: { onHamburgerClick: () => void }) {
 
   return (
     <div>
-      <div className='flex justify-between mx-6 md:mx-12'>
+      <div className='flex justify-between mx-1 md:mx-12'>
         <button className='cursor-pointer' onClick={onHamburgerClick}>
           <Image
             src='/hamburger.png'
@@ -107,21 +155,7 @@ function SubSection({ onHamburgerClick }: { onHamburgerClick: () => void }) {
           ECOBUG
         </h1>
 
-        <button
-          onClick={() => {
-            const x = Math.random()
-            x > 0.5 ? router.push('/auth/login') : router.push('/auth/signup')
-          }}
-          className='cursor-pointer'
-        >
-          <Image
-            src='/user.png'
-            alt='menu'
-            width={36}
-            height={36}
-            className='w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11'
-          />
-        </button>
+        <UserDialog />
       </div>
 
       <div className='flex flex-nowrap justify-center items-end gap-2 sm:gap-6 lg:gap-40 mt-4 md:mt-10 px-2'>
@@ -188,7 +222,6 @@ export default function Navbar({ setIsSidebarOpen }: NavProps) {
           onMenuOpen={() => setIsSidebarOpen(true)}
           onMenuClose={() => setIsSidebarOpen(false)}
         />
-
         <style>{`.sm-scope .staggered-menu-header { visibility: hidden !important; pointer-events: none !important; }`}</style>
       </div>
     </>
