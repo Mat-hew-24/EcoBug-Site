@@ -13,49 +13,36 @@ export default function Footer() {
       >
         <div className='flex flex-col gap-6 w-full sm:w-[45%] md:w-auto items-start'>
           <h3 className='text-2xl uppercase tracking-widest mb-4'>INSTAGRAM</h3>
-          <p className='cursor-pointer hover:text-gray-300 transition-colors'>
-            -------
-          </p>
-          <p className='cursor-pointer hover:text-gray-300 transition-colors'>
-            -------
-          </p>
-          <p className='cursor-pointer hover:text-gray-300 transition-colors'>
-            -------
-          </p>
-        </div>
-
-        {/* FACEBOOK */}
-        <div className='flex flex-col gap-6 w-full sm:w-[45%] md:w-auto items-start'>
-          <h3 className='text-2xl uppercase tracking-widest mb-4'>FACEBOOK</h3>
-          <p className='cursor-pointer hover:text-gray-300 transition-colors'>
-            --------
-          </p>
-          <p className='cursor-pointer hover:text-gray-300 transition-colors'>
-            --------
-          </p>
-          <p className='cursor-pointer hover:text-gray-300 transition-colors'>
-            --------
-          </p>
+          <a
+            className='hover:text-gray-300 transition-colors break-all'
+            href='https://www.instagram.com/we.ecobug/'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            https://www.instagram.com/we.ecobug/
+          </a>
         </div>
 
         <div className='flex flex-col gap-6 w-full sm:w-[45%] md:w-auto items-start'>
           <h3 className='text-2xl uppercase tracking-widest mb-4'>LINKEDIN</h3>
-          <p className='cursor-pointer hover:text-gray-300 transition-colors'>
-            ---------
-          </p>
-          <p className='cursor-pointer hover:text-gray-300 transition-colors'>
-            ---------
-          </p>
-          <p className='cursor-pointer hover:text-gray-300 transition-colors'>
-            ---------
-          </p>
+          <a
+            className='hover:text-gray-300 transition-colors break-all'
+            href='https://www.linkedin.com/in/ecobug-landscape-consultant-919a973b5/'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            https://www.linkedin.com/in/ecobug-landscape-consultant-919a973b5/
+          </a>
         </div>
 
         <div className='flex flex-col gap-6 w-full sm:w-[45%] md:w-auto items-start'>
           <h3 className='text-2xl lowercase tracking-widest mb-4'>email:</h3>
-          <p className='cursor-pointer hover:text-gray-300 transition-colors'>
-            --------
-          </p>
+          <a
+            className='hover:text-gray-300 transition-colors break-all'
+            href='mailto:connect.ecobug@gmail.con'
+          >
+            connect.ecobug@gmail.con
+          </a>
         </div>
       </div>
     </footer>

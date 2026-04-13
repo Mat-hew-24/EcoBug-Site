@@ -555,7 +555,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           {/* 'X' close button */}
           <button
             onClick={closeMenu}
-            className='absolute top-8 right-8 scale-110 hover:scale-120 trans text-black text-4xl hover:opacity-70 transition-opacity z-50 cursor-pointer'
+            className='absolute top-8 right-8 scale-90 hover:scale-100 trans text-black hover:opacity-70 transition-opacity z-50 cursor-pointer'
             aria-label='Close panel'
           >
             <Image
@@ -580,7 +580,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                     key={it.label + idx}
                   >
                     <a
-                      className='sm-panel-item relative text-black font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]'
+                      className='sm-panel-item relative text-black font-semibold text-[2rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]'
                       href={it.link}
                       aria-label={it.ariaLabel}
                       data-index={idx + 1}
@@ -673,7 +673,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-socials-link:hover { color: var(--sm-accent, #ff0000); }
 .sm-scope .sm-panel-title { margin: 0; font-size: 1rem; font-weight: 600; color: #fff; text-transform: uppercase; }
 .sm-scope .sm-panel-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-.sm-scope .sm-panel-item { position: relative; color: #000; font-weight: 600; font-size: 4rem; cursor: pointer; line-height: 1; letter-spacing: -2px; text-transform: uppercase; transition: background 0.25s, color 0.25s; display: inline-block; text-decoration: none; padding-right: 1.4em; }
+.sm-scope .sm-panel-item { position: relative; color: #000; font-weight: 600; font-size: 2rem; cursor: pointer; line-height: 1; letter-spacing: -2px; text-transform: uppercase; transition: background 0.25s, color 0.25s; display: inline-block; text-decoration: none; padding-right: 1.4em; }
 .sm-scope .sm-panel-itemLabel { display: inline-block; will-change: transform; transform-origin: 50% 100%; }
 .sm-scope .sm-panel-item:hover { color: var(--sm-accent, #ff0000); }
 .sm-scope .sm-panel-list[data-numbering] { counter-reset: smItem; }

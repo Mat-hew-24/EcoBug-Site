@@ -1,6 +1,8 @@
 import { pixelifySans } from '@/components/utils/utils'
 
 export default function WebTool() {
+  const description: string =
+    'Access professional tools on this website to iterate landscape designs, run simulations to understand suitability and practicality and avail cost estimations that update itself with any changes in the design. Check it out now!'
   return (
     <>
       <div className='min-h-screen bg-[#367b38]'>
@@ -13,9 +15,9 @@ export default function WebTool() {
         </div>
         <div className='flex justify-center items-center px-4'>
           <p
-            className={`${pixelifySans.className} text-white text-2xl sm:text-4xl md:text-6xl mt-32 sm:mt-56 md:mt-80 text-center`}
+            className={`${pixelifySans.className} text-white text-lg sm:text-2xl md:text-3xl mt-20 text-center`}
           >
-            web version coming soon!!!
+            {description}
           </p>
         </div>
       </div>

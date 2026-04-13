@@ -13,7 +13,7 @@ type BtnProps = {
 
 const links = {
   home: '/',
-  buy: '/',
+  buy: '/products',
   webtool: '/webtool',
   blog: '/blog',
   aboutus: '/about',

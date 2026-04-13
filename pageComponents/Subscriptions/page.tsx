@@ -13,17 +13,17 @@ export default function Subscriptions() {
       </div>
       <div className='flex items-end justify-center flex-wrap gap-8 bg-white p-6'>
         <SubscriptionCard
-          type='Custom subscription'
+          type='Student Plan'
           description='if you are looking for a more personal approach choose custom.'
           link='/checkout'
         />
         <SubscriptionCard
-          type='Custom subscription'
+          type='Professional Plan'
           description='if you are looking for a more personal approach choose custom.'
           link='/checkout'
         />
         <SubscriptionCard
-          type='Custom subscription'
+          type='Studio Plan'
           description='if you are looking for a more personal approach choose custom.'
           link='/checkout'
         />
